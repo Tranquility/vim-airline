@@ -186,6 +186,11 @@ function! airline#extensions#load()
     call airline#extensions#eclim#init(s:ext)
   endif
 
+  if (get(g:, 'airline#extensions#neomake#enabled', 1) && get(g:, 'airline_enable_neomake', 1))
+        \ && exists(':Neomake')
+    call airline#extensions#neomake#init(s:ext)
+  endif
+
   if (get(g:, 'airline#extensions#syntastic#enabled', 1) && get(g:, 'airline_enable_syntastic', 1))
         \ && exists(':SyntasticCheck')
     call airline#extensions#syntastic#init(s:ext)
